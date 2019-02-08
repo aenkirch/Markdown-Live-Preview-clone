@@ -1,0 +1,26 @@
+html {
+  background-color: #212121;
+}
+
+#editor {
+  background-color: white;
+  padding: 4%;
+  width: 100%;
+}
+
+.row {
+  padding: 4%;
+}
+
+textarea {
+  resize: none;
+  height: 30em;
+}
+
+span {
+  color: white;
+}
+
+#vertical_line {
+  border-left: solid white;
+}

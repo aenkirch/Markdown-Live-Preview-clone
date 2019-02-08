@@ -1,0 +1,42 @@
+class Application extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      message: "# By\n## aenkirch\n--\nfor [FreeCodeCamp](http://www.freecodecamp.org/)\n```\nHeres some code\n```\n\t- liste\n\t\t- deux\n- trois\n\n`a code block`\n> Blockquote\n\n![Logo React](https://ucarecdn.com/2f75eb64-e883-4117-b57d-77277ca57118/)"
+    }
+    this.handleChange = this.handleChange.bind(this);
+    this.converter = this.converter.bind(this);
+  }
+  handleChange(event){
+    this.setState ({
+      message: event.target.value
+    })
+  }
+  converter(){
+    var convertedText = marked(this.state.message, {
+      sanitize: true,
+      breaks: true
+    });
+    return {
+      __html: convertedText
+    }
+  }
+  render () {
+    return (
+     <div class="row">
+        <div class="col s6 m6 l6">
+          <textarea id="editor" value = {this.state.message} onChange={this.handleChange}>
+          </textarea>
+        </div>
+        <div id="vertical_line" class="col s6 m6 l6">
+          <span id="preview" dangerouslySetInnerHTML={this.converter()} />
+        </div>
+     </div>
+    );
+  }
+}
+
+ReactDOM.render(
+  <Application />, 
+  document.getElementById('app')
+);
